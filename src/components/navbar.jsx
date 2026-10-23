@@ -1,6 +1,9 @@
+import { Link, NavLink } from 'react-router-dom'
 
-
-import { Link } from 'react-router-dom'
+const links = [
+  { to: '/', label: 'Início' },
+  { to: '/cardapio', label: 'Cardápio' },
+]
 
 export default function Navbar() {
   return (
@@ -21,8 +24,17 @@ export default function Navbar() {
           </span>
           <span className="font-display text-xl tracking-wide">Tsuki</span>
         </Link>
+
+        <ul className="flex gap-6">
+          {links.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink to={to} end>
+                {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
       </nav>
     </header>
   )
 }
-
